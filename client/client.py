@@ -1,13 +1,11 @@
 import socket
 
-sock = socket.socket()
-sock.setblocking(1)
-sock.connect(('127.0.0.1', 2000))
+client_socket = socket.socket()
+client_socket.connect(('127.0.0.1', 2000))
 
-# msg = input()
-msg = "aaaaaa!"
-sock.send(msg.encode())
+msg = 'hi, i`m groot'
+client_socket.send(msg.encode())
+data = client_socket.recv(1024).decode('utf-8')
+client_socket.close()
 
-data = sock.recv(1024)
-
-sock.close()
+print(data)
