@@ -8,5 +8,5 @@ Create a Docker Compose configuration with an echo server.
 Echo service must be accessible from the outside.
 ````
 ### Start echo server:
-* git clone
+* git clone https://github.com/AlexKrup7/Echo-Server.git
 * docker-compose up --build
