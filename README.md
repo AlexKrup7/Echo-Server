@@ -6,6 +6,8 @@ and sends them back in the upper case.
 Server must support many simultaneous connections.
 ````
 ### Start echo server:
+* git clone
+* docker-compose up --build
 
 ### Work example
 
