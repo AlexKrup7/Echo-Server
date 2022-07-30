@@ -2,17 +2,17 @@ import asyncio
 
 
 class EchoServer(asyncio.Protocol):
-    def connection_made(self, transport):
-        peername = transport.get_extra_info('peername')
+    def connection_made(self, client):
+        peername = client.get_extra_info('peername')
         print('connection from {}'.format(peername))
-        self.transport = transport
+        self.client = client
 
     def data_received(self, data):
         print('data received: {}'.format(data.decode()))
-        self.transport.write(data)
+        self.client.write(data)
 
         # close the socket
-        self.transport.close()
+        self.client.close()
 
 
 loop = asyncio.get_event_loop()
