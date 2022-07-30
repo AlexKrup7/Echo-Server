@@ -5,7 +5,7 @@ services:
     build: server/
     command: python ./server.py
     ports:
-      - 2000:2000
+      - 8080:8080
 
   client:
     build: client/
@@ -16,7 +16,7 @@ services:
 
   client2:
     build: client/
-    command: python ./client2.py
+    command: python ./multiclient.py
     network_mode: host
     depends_on:
-      - server
+      - client

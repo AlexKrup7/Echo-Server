@@ -8,5 +8,16 @@ Create a Docker Compose configuration with an echo server.
 Echo service must be accessible from the outside.
 ````
 ### Start echo server:
-* git clone
+* git clone https://github.com/AlexKrup7/Echo-Server.git
+1)
+* python .\server\server.py
+* python .\client\client.py
+* type any message in terminal
+* python .\server\multiclient.py
+
+2)
 * docker-compose up --build
+```
+small problems with starting the server through docker compose.
+trying to fix the problem
+```

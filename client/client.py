@@ -1,11 +1,20 @@
-import socket
+import asyncio
 
-client_socket = socket.socket()
-client_socket.connect(('127.0.0.1', 2000))
 
-msg = 'hi, i`m groot'
-client_socket.send(msg.encode())
-data = client_socket.recv(1024).decode('utf-8')
-client_socket.close()
+async def echo_client(message):
+    reader, writer = await asyncio.open_connection(
+        '127.0.0.1', 8080)
 
-print(data)
+    print(f'Send: {message!r}')
+    writer.write(message.encode())
+    await writer.drain()
+
+    data = await reader.read(100)
+    print(f'Received: {data.decode().upper()!r}')
+
+    print('Close the connection')
+    writer.close()
+    await writer.wait_closed()
+
+
+asyncio.run(echo_client(input()))
